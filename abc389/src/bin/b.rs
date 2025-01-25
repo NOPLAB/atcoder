@@ -16,9 +16,22 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        x: usize
     }
+
+    let mut y = 1;
+    let mut c = 1;
+
+    loop {
+        y *= c;
+
+        if y == x {
+            break;
+        }
+
+        c += 1;
+    }
+
+    println!("{}", c);
 }
