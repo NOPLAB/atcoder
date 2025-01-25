@@ -16,9 +16,9 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input!{
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+    input! {
+        s: Chars
     }
+
+    println!("{}", (s[0] as u8 - 48) * (s[2] as u8 - 48));
 }
