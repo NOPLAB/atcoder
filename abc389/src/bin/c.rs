@@ -3,7 +3,6 @@ use core::panic;
 use itertools::{iproduct, Itertools};
 #[allow(unused_imports)]
 use num_traits::pow;
-use proconio::input_interactive;
 #[allow(unused_imports)]
 use proconio::{
     fastout, input,
@@ -18,33 +17,32 @@ use std::iter::FromIterator;
 
 #[fastout]
 fn main() {
-    input_interactive! {
+    input! {
         q: usize
     }
 
-    let mut snake: VecDeque<usize> = VecDeque::new();
+    let mut snakes = vec![0];
+    let mut leave_snake_num = 0;
 
     for _ in 0..q {
-        input_interactive! {
+        input! {
             op: usize
         }
         match op {
             1 => {
-                input_interactive! {
+                input! {
                     l: usize
                 }
 
-                snake.push_back(l);
+                snakes.push(snakes[snakes.len() - 1] + l);
             }
-            2 => {
-                snake.pop_front();
-            }
+            2 => leave_snake_num += 1,
             3 => {
-                input_interactive! {
+                input! {
                     k: usize
                 }
 
-                let l: usize = snake.iter().take(k - 1).sum();
+                let l = snakes[k - 1 + leave_snake_num] - snakes[leave_snake_num];
 
                 println!("{}", l);
             }
