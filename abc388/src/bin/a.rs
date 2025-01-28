@@ -17,8 +17,8 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        s: Chars,
     }
+
+    println!("{}UPC", s[0]);
 }
