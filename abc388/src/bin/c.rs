@@ -17,8 +17,26 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        n: usize
     }
+
+    let mut m = vec![];
+
+    for _ in 0..n {
+        input! {
+            t: usize
+        }
+
+        m.push(t);
+    }
+
+    let mut ans = 0;
+    for i in 1..n {
+        let smalls = &m[0..i];
+        let big = &m[i];
+
+        ans += smalls.iter().filter(|size| **size <= big / 2).count();
+    }
+
+    println!("{}", ans);
 }
