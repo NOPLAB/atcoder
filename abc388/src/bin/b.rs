@@ -17,8 +17,24 @@ use std::iter::FromIterator;
 #[fastout]
 fn main() {
     input! {
-        h: usize, w: usize,
-        s: [Chars; h],
-        mut plan: [(usize, usize, usize); h]
+        n: usize,
+        d: usize
+    }
+
+    let mut snake = vec![];
+
+    for _ in 0..n {
+        input! {
+            t: usize,
+            l: usize
+        }
+
+        snake.push((t, l));
+    }
+
+    for i in 1..=d {
+        let ans = snake.iter().map(|s| s.0 * (s.1 + i)).max().unwrap();
+
+        println!("{}", ans);
     }
 }
